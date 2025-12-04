@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaming Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+      background: #222;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    #gameArea {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      background: #333;
+      position: relative;
+      display: none;
+      border: 3px solid #555;
+    }
+    #target {
+      width: 40px;
+      height: 40px;
+      background: red;
+      position: absolute;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #0d6efd;
+      color: white;
+      margin-top: 20px;
+    }
+    footer {
+      padding: 15px;
+      background: #222;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Gaming Portal</header>
+
+  <h2>Welcome to my gaming page</h2>
+  <p>Click the button below to play a simple 2D mini game!</p>
+
+  <button onclick="startGame()">Play Game</button>
+
+  <div id="gameArea">
+    <div id="target"></div>
+  </div>
+
+  <footer>
+    Created by Shivansh Chauhan - 23BCG10081
+  </footer>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const target = document.getElementById('target');
+
+    function startGame() {
+      gameArea.style.display = 'block';
+      moveTarget();
+    }
+
+    function moveTarget() {
+      const maxX = gameArea.clientWidth - target.clientWidth;
+      const maxY = gameArea.clientHeight - target.clientHeight;
+
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+
+      target.style.left = newX + 'px';
+      target.style.top = newY + 'px';
+    }
+
+    target.addEventListener('click', () => {
+      alert('Nice! You clicked the box!');
+      moveTarget();
+    });
+      let autoMove;
+
+    function startGame() {
+      gameArea.style.display = 'block';
+      moveTarget();
+    }
+
+    function moveTarget() {
+      const maxX = gameArea.clientWidth - target.clientWidth;
+      const maxY = gameArea.clientHeight - target.clientHeight;
+
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+
+      target.style.left = newX + 'px';
+      target.style.top = newY + 'px';
+
+      clearTimeout(autoMove);
+      autoMove = setTimeout(moveTarget, 2000); // Auto move every 2s
+    }
+
+    target.addEventListener('click', () => {
+      alert('Nice! You clicked the box!');
+      moveTarget();
+    });
+  </script>
+
+</body>
+</html>
